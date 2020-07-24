@@ -50,7 +50,7 @@ describe("auth model", function () {
       });
   });
 
-  it("./register fails with empty password", () => {
+  it("./register fails with empty password,testing the invalid method", () => {
     supertest(server)
       .post("localhost:3300/api/auth/register")
       .send({
