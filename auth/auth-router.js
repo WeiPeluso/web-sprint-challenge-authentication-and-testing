@@ -2,8 +2,9 @@ const router = require("express").Router();
 const Users = require("./auth-model");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const restricted = require("./authenticate-middleware");
 
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Users.find()
     .then((users) => {
       res.status(200).json({ data: users, jwt: req.jwt });
